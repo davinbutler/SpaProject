@@ -1,0 +1,44 @@
+<html>
+
+<head>
+<p>Please enter your name</p>
+
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $.get("/poll", function(data, status){
+		$("#poll").load("/poll");
+        });
+    });
+});
+
+
+
+</script>
+
+</head>
+
+<body>
+
+<!-- form for inputting text-->
+<form action="/echo" method="POST">
+<input name="text">
+<input type="submit" value="Echo">
+</form>
+
+<!-- This syntax tells Jinja to put the content of the text variable instead of the {{ text }} snippet.
+Text is diplayed only if there is something entered -->
+{% if text %}
+  Welcome {{ text }} !
+{% endif %}
+
+
+
+<button>Poll</button>
+
+<div id ="poll">
+</div>
+
+
+</body>
+</html>
